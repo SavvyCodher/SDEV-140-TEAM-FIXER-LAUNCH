@@ -1,0 +1,19 @@
+
+nav {
+  border-bottom: 4px solid black;
+  text-align: center;
+  width: 100%;
+  background: black;
+  box-shadow: none;
+  cursor: none;
+  
+}
+
+
+.btn {
+  justify-content: center;
+  margin-right: 6px;
+  width: 150px;
+  box-shadow: none;
+  cursor: none;
+}
