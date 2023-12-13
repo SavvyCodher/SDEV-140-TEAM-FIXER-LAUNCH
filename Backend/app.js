@@ -44,7 +44,7 @@ router.get("/ads", async(req,res) =>{
    const Filter = UserId ? { UserId } : {}
    console.log(Filter)
    try{
-      const ads = await Ad.find(Filter)
+      const ads = await Ad.find(Filter).sort({DateNeeded : 1})
       res.send(ads)
       console.log(ads)
    }
@@ -95,6 +95,25 @@ router.put("/ads/:id/apply", async(req,res) =>{
          $push: {
             Applicants: ad.applicantid
          }
+      })
+      console.log(ad)
+      res.sendStatus(204)
+   }
+   catch(err){
+      res.status(400).send(err)
+   }
+})
+
+router.put("/ads/:id/approve", async(req,res) =>{
+   //first we need to find and update the ad the front end wants us to update.
+   //to do this we need to request the id of the ad from request
+   //and the find it in the database and update it
+   try{
+      const ad = req.body
+      await Ad.updateOne({_id: req.params.id},
+         {         
+         Accepted: true, 
+         ApprovedApplicant: ad.ApprovedApplicant 
       })
       console.log(ad)
       res.sendStatus(204)
