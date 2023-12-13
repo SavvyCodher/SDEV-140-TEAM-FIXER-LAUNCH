@@ -27,38 +27,39 @@ const AdsList = ({ ads }) => {
     return (
       <div className="ads-list">
         
-        <div className="card-group ">
-        {ads.map(ad => (
-          
-          
-            <div className="card text-center shadow m-2" key={ad.UserId} >
+        <div className="card-group">
+          <div className="row">
 
-              <div className="card-body text-dark">
-              
-              
-                      <h4 className="card-title">{ad.ServiceRequest}</h4>
+            {ads.map(ad => (
+                <div className="col-lg">
 
-                      <p className="card-text text-secondary">
-                          {ad.Desc}
-                      </p>
+                    <div className="card m-3 text-center shadow" key={ad.UserId}>
 
-                      <p className="card-text text-secondary">
-                      {moment(ad.DateNeeded).format('MMM DD, YYYY')}
+                              <div className="card-header">
+                                Date Needed: {moment(ad.DateNeeded).format('MMM DD, YYYY')}
+                              </div>
 
-                      </p>
-                      <p className="card-text text-secondary">
-                        {ad.ZipCode}
-                      </p>
-                      <button onClick={() => ApplyToAd(ad._id)}>Apply</button>
 
-              </div>
-            </div>
-          
-          
-        ))}
+                              <div className="card-body text-dark">
+
+                                <h5 className="card-title">{ad.ServiceRequest}</h5>
+                                <p className="card-text">{ad.Desc}</p>
+                                <p className="card-text">{ad.City}</p>
+                                <a href="#" class="btn btn-dark">Apply</a>
+                              </div>
+
+
+                              <div className="card-footer text-muted">
+                                Posted on: {moment(ad.DatePosted).format('MMM DD, YYYY')}
+                              </div>
+                    </div>
+                </div>
+            ))}
+          </div>
         </div>
       </div>
-    );
+  
+  );
   }
    
   export default AdsList;
