@@ -22,7 +22,7 @@ const AllJobs=() => {
          <div><Nbar/></div>
               <br /> <br />
               {user
-        ? <h2>Job Postings <div className="alljobs">
+        ? <h2 className="text-center">Job Postings <div className="alljobs">
             <br/>
             {ads && <AdsList ads={ads}/>}</div></h2>
 
