@@ -16,17 +16,19 @@ const AllJobs=() => {
                 setAds(data);
             });
     },[]);
-    
+
     return (
         <>
          <div><Nbar/></div>
               <br /> <br />
               {user
-                ? <h2>Job Postings<div className="alljobs"><br/><br/>{ads && <AdsList ads={ads} />}</div></h2>
-              
-                : <h2 className="text-center">You must be logged in to view this page.
-                <br/><a href="/login"><button className="btn bg-black btn-dark mt-3" >Log In</button></a></h2>}
-        
+        ? <h2>Job Postings <div className="alljobs">
+            <br/>
+            {ads && <AdsList ads={ads}/>}</div></h2>
+
+        : <h2 className="text-center">You must be logged in to view this page.
+            <br/>
+        <a href="/login"><button className="btn bg-black btn-dark mt-3" >Log In</button></a></h2>}
        </>
     );
 
