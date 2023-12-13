@@ -16,7 +16,7 @@ const AddJob = () => {
   const [Email, setEmail] = useState('');
   const [City, setCity] = useState('');
   const [ZipCode, setZipCode] = useState('');  
-  const [Applicants, setApplicants] = useState('');
+  //const [Applicants, setApplicants] = useState('');
   const [Accepted, setAccepted] = useState(false);
   const [ApprovedApplicant, setApprovedApplicant] = useState('');
   const [error, setError] = useState(''); 
@@ -32,7 +32,7 @@ const AddJob = () => {
       const SubmitJob = async (e) => {
         e.preventDefault()
         const NewJob = {
-          ServiceRequest, Desc, DatePosted, JobCategory, DateNeeded, TimeSlot, Email, City, ZipCode, UserId:user.uid, Applicants, Accepted, ApprovedApplicant
+          ServiceRequest, Desc, DatePosted, JobCategory, DateNeeded, TimeSlot, Email:user.email, City, ZipCode, UserId:user.uid, Accepted, ApprovedApplicant
         }
         console.log(NewJob)
         // const NewJob = {
@@ -66,17 +66,18 @@ return(
     <div className="createJobs">
       <br />
       <br />
-      <h2>Post Job</h2>
+      <h2>Post a Job</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={SubmitJob}>
       <label>Service Request:</label>
-      <select
-               
-                value={ServiceRequest}
-                onChange={e => setServiceRequest(e.target.value)}>
-                { Categories.map(service => (<option value={service}>{service}</option>) )}
-            </select>
-        
+      <select   
+        required
+        placeholder="Service Request"            
+        value={ServiceRequest}
+        onChange={e => setServiceRequest(e.target.value)}>
+        <option value="">Please Select a Category</option>  
+        { Categories.map(service => (<option value={service}>{service}</option>) )}
+      </select>        
         <label>Job Description</label>
         <textarea 
           type="text"
@@ -86,16 +87,16 @@ return(
           value={Desc}
           onChange={(e) => setDesc(e.target.value)}
         />
-        <label>Job Posted Date</label>
+        {/* <label>Job Posted Date</label>
         <input 
           type="date" 
           //required 
           value={DatePosted}
           onChange={(e) => setDatePosted(e.target.value)}
-        />
+        /> */}
         
         
-        <label>Service Needed Date</label>
+        <label>Service Needed By</label>
         <input 
           type="date" 
           //required 
@@ -110,13 +111,13 @@ return(
           value={TimeSlot}
           onChange={(e) => setTimeSlot(e.target.value)}
         />
-        <label>Email address</label>
+        {/* <label>Email address</label>
         <input 
           type="text" 
           //required 
           value={Email}
           onChange={(e) => setEmail(e.target.value)}
-        />
+        /> */}
         <div>
         <h5 className="card-title">
         
