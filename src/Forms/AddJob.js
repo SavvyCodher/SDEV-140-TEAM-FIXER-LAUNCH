@@ -87,6 +87,15 @@ return(
           value={Desc}
           onChange={(e) => setDesc(e.target.value)}
         />
+        <label>City</label>
+        <textarea 
+          type="text"
+          rows="1" 
+          cols="50"
+          //required 
+          value={City}
+          onChange={(e) => setCity(e.target.value)}
+        />
         {/* <label>Job Posted Date</label>
         <input 
           type="date" 
