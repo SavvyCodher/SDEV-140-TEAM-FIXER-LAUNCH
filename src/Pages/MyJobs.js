@@ -1,136 +1,71 @@
-import Nbar from './Nbar';
-import useUser from '../hooks/useUser';
-import { useState, useEffect } from 'react';
-import moment from 'moment';
+import moment from "moment";
+import useUser from "../hooks/useUser";
+const AdsList = ({ ads }) => {
+  const {user} = useUser()
+  const ApplyToAd = async(jobid) => {
+    try {
+      const response = await fetch(http://localhost:3001/api/ads/${jobid}/apply, {
+          method: "PUT",
+          body: JSON.stringify({applicantid:user.uid}),
+          headers: {
+              "Content-Type": "application/json"
+          }
+      })
+      if (response.ok) {
+          alert("Successful")
+          //navigate("/myjobs")
+      } else {
+          //setError("Please fill out all fields")
+      }
+
+  } catch (error) {
+      console.log(error)
+  }
+  }
 
 
-const MyJobs = () => {
-    const[jobs, setJobs] = useState([])    
-    const {user} = useUser();  // is the user logged in
-    //console.log(user?.uid)
-    console.log({jobs})
+    return (
+      <div className="ads-list">
 
-    const GetUserJobs = async () => {
-        const response = await fetch (`http://localhost:3001/api/ads/?uid=${user?.uid}`)
-        const UserJobs = await response.json()
-        console.log(UserJobs)
-        setJobs(UserJobs)
-        }
-    useEffect(() => {
-        if(user){
-            GetUserJobs()
-        } 
-    }, [user])
-
-    const approveApplicant = async(jobId, applicant) =>{
-        await fetch (`http://localhost:3001/api/ads/${jobId}/approve`,{
-            method:"PUT",
-            body:JSON.stringify({
-            ApprovedApplicant: applicant
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        GetUserJobs()
-        //console.log(`approved applicant ${applicant}`)
-    }
-    return ( 
-        <>
-              <div><Nbar/></div>
-           
-            
-            <br /> <br />
-              {user
-        ? <h2 className="text-center">My Jobs</h2>
-        :   <h2  className="text-center">You must be logged in to view this page.
-            <br />
-            <a href="/login"><button className="btn bg-black btn-dark mt-3" >Log In</button></a>
-            </h2>
-            }
-
-            <div className="container">
-            {jobs.length ? (
-                <div className="card-group">
-                    <div className="row">
-                        {jobs.map (job => (
-                            <div className="col-sm-3 col">
-
-                                <div className="card text-center shadow m-3" key={job.UserId} >
-
-                                        <div className="card-header">
-                                                Date Needed: {moment(job.DateNeeded).format('MMM DD, YYYY')}
-                                        
-                                        </div>
+        <div className="card-group">
+        <div className="row">
 
 
 
-                                        <div className="card-body text-dark">
+        {ads.map(ad => (
 
-                                                    <h5 className="card-title">{job.ServiceRequest}</h5>
+          <div className="col-lg">
 
-                                                    <p className="card-text text-secondary">
-                                                        {job.Desc}
-                                                    </p>
-                            
-                                                    {job.Accepted ? (
+            <div className="card m-3 text-center shadow" key={ad.UserId} >
 
-                                                                <>
-                                                                <table class="table">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th colspan="2">Fixer Applicants</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                <tr>
-                                                                    <th scope="row">{job.ApprovedApplicant.substring(0,5)}</th>
-                                                                    <td><button type="button" class="btn btn-success float-end" text="white">Approved</button></td>
-                                                                </tr>
-                                                                </tbody>
-                                                                </table>
-                                                                </>
+              <div className="card-body text-dark">
 
-                                                   
-                                                    ) : (
-                                                        <ul style={{listStyle:"none",paddingLeft:0}}>
-                                                            {job.Applicants.map(applicant=>(
-                                                                <>
-                                                                <table class="table">
-                                                                <thead>
-                                                                  <tr>
-                                                                    <th colspan="2">Fixer Applicants</th>
-                                                                  </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                  <tr>
-                                                                    <th scope="row">{applicant.substring(0,5)}</th>
-                                                                    <td><button onClick={() => approveApplicant(job._id,applicant)}> Approve</button></td>
-                                                                  </tr>
-                                                                </tbody>
-                                                              </table>
-                                                              </>
-                                                              
-                                                                // <li><a>Fixer {applicant.substring(0,5)}</a> <button onClick={() => approveApplicant(job._id,applicant)}> Approve</button></li>
-                                                            ))}
-                                                        </ul>
-                                                    )}
-                                                
 
-                                        </div>
-                                        
-                                </div> 
-                            </div>   
-                        ))}
-                    </div>
-                </div>
-            ):(
-                <h2></h2>
+                      <h4 className="card-title">{ad.ServiceRequest}</h4>
 
-            )}
-</div>
-        </>
+                      <p className="card-text text-secondary">
+                          {ad.Desc}
+                      </p>
+
+                      <p className="card-text text-secondary">
+                      {moment(ad.DateNeeded).format('MMM DD, YYYY')}
+
+                      </p>
+                      <p className="card-text text-secondary">
+                        {ad.ZipCode}
+                      </p>
+                      <button onClick={() => ApplyToAd(ad._id)}>Apply</button>
+                      </div>
+
+              </div>
+            </div>
+
+
+        ))}
+        </div>
+        </div>
+        </div>
     );
-}
- 
-export default MyJobs;
+  }
+
+  export default AdsList;
