@@ -42,7 +42,7 @@ const MyJobs = () => {
             
             <br /> <br />
               {user
-        ? <h2>My Jobs</h2>
+        ? <h2 className="text-center">My Jobs</h2>
         : <h2  className="text-center">You must be logged in to view this page.
             <br />
             <a href="/login"><button className="btn bg-black btn-dark mt-3" >Log In</button></a></h2>}
