@@ -45,7 +45,7 @@ const AdsList = ({ ads }) => {
                                 <h5 className="card-title">{ad.ServiceRequest}</h5>
                                 <p className="card-text">{ad.Desc}</p>
                                 <p className="card-text">{ad.City}</p>
-                                <a href="#" class="btn btn-dark">Apply</a>
+                                <button class="btn btn-dark" onClick={() => ApplyToAd(ad._id)}>Apply</button>
                               </div>
 
 
