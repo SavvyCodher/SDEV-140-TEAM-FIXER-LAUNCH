@@ -74,7 +74,24 @@ const MyJobs = () => {
                                                     </p>
                             
                                                     {job.Accepted ? (
-                                                    <p>Fixer{job.ApprovedApplicant.substring(0,5)}<span style={{display:"inline-block",padding:5,background:"limegreen",color:"white"}}>Approved</span></p>
+
+                                                                <>
+                                                                <table class="table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th colspan="2">Fixer Applicants</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <th scope="row">{job.ApprovedApplicant.substring(0,5)}</th>
+                                                                    <td><button type="button" class="btn btn-success float-end" text="white">Approved</button></td>
+                                                                </tr>
+                                                                </tbody>
+                                                                </table>
+                                                                </>
+
+                                                   
                                                     ) : (
                                                         <ul style={{listStyle:"none",paddingLeft:0}}>
                                                             {job.Applicants.map(applicant=>(
@@ -116,4 +133,3 @@ const MyJobs = () => {
 }
  
 export default MyJobs;
-
