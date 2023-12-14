@@ -22,9 +22,11 @@ const AllJobs=() => {
          <div><Nbar/></div>
               <br /> <br />
               {user
-        ? <h2 className="text-center">Job Postings <div className="alljobs">
+        ? <div className="alljobs">
+            <h2 className="text-center">Job Postings </h2>
             <br/>
-            {ads && <AdsList ads={ads}/>}</div></h2>
+            
+                {ads && <AdsList ads={ads}/>}</div>
 
         : <h2 className="text-center">You must be logged in to view this page.
             <br/>
