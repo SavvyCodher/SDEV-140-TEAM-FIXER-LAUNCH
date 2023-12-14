@@ -49,12 +49,12 @@ const MyJobs = () => {
             </h2>
             }
 
-
+            <div className="container">
             {jobs.length ? (
                 <div className="card-group">
                     <div className="row">
                         {jobs.map (job => (
-                            <div className="col-lg">
+                            <div className="col-sm-3 col">
 
                                 <div className="card text-center shadow m-3" key={job.UserId} >
 
@@ -128,6 +128,7 @@ const MyJobs = () => {
                 <h2></h2>
 
             )}
+</div>
         </>
     );
 }
