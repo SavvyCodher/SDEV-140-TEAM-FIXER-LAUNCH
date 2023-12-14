@@ -26,7 +26,7 @@ const AdsList = ({ ads }) => {
 
     return (
       <div className="ads-list">
-        <div className="container>
+        <div className="container">
         <div className="card-group">
           <div className="row">
 
