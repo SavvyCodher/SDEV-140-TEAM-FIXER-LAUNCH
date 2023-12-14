@@ -23,7 +23,7 @@ const Nbar = () => {
       <div className="btn toolbar align-items-center">         
 <div className="links btn btn-group" role="group">
 <Link to="/"><button className="btn btn-warning">Home</button></Link>
-<Link to="/ourservices" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><button className="btn btn dropdown-toggle btn-warning dropdown">OurServices</button></Link>
+<Link to="/ourservices" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><button className="btn btn dropdown-toggle btn-warning dropdown">Our Services</button></Link>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <li><a class="dropdown-item" href="/interior">Interior Design</a></li>
         <li><a class="dropdown-item" href="/Flooring">Flooring</a></li>
