@@ -9,7 +9,7 @@ const Categories = ["Interior Design", "Flooring", "Plumbing", "Housekeeping", "
 const AddJob = () => {
   const [ServiceRequest, setServiceRequest] = useState('');
   const [Desc, setDesc] = useState('');
-  const [DatePosted, setDatePosted] = useState('');
+  const [DatePosted, setDatePosted] = useState('12/14/2023');
   const [JobCategory, setJobCategory] = useState('');
   const [DateNeeded, setDateNeeded] = useState('');
   const [TimeSlot, setTimeSlot] = useState('');
