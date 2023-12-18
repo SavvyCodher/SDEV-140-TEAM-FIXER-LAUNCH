@@ -31,7 +31,7 @@ const AdsList = ({ ads }) => {
           <div className="row">
 
             {ads.map(ad => (
-                <div className="col-sm-3 col mb-4">
+                <div className="col-sm col mb-4">
 
                     <div className="card m-3 text-center shadow" key={ad.UserId}>
 
