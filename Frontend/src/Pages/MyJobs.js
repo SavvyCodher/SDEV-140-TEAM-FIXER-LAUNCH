@@ -54,7 +54,7 @@ const MyJobs = () => {
                 <div className="card-group">
                     <div className="row">
                         {jobs.map (job => (
-                            <div className="col-sm-3 col mb-4">
+                            <div className="col-sm col mb-4">
 
                                 <div className="card text-center shadow m-3" key={job.UserId} >
 
